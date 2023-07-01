@@ -4,7 +4,7 @@ import morgan from 'morgan'
 const app = express()
 
 app.use(morgan('combined'))
-app.get('/bar/health', (req, res) => {
+app.get('/health', (req, res) => {
   res.send('Ok')
 })
 
