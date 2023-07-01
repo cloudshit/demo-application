@@ -1,0 +1,56 @@
+name: Build container images
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'src/**'
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-foo:
+    name: build foo application
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./src/foo
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: ghcr.io/cloudshit/foo:latest
+
+  build-bar:
+    name: build bar application
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./src/bar
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: ghcr.io/cloudshit/bar:latest
