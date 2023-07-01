@@ -25,10 +25,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: debug
+        run: ls
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: src/foo/Dockerfile
+          context: src/foo
           push: true
           tags: ghcr.io/cloudshit/foo:latest
 
@@ -49,6 +52,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: src/bar/Dockerfile
+          context: src/bar
           push: true
           tags: ghcr.io/cloudshit/bar:latest
