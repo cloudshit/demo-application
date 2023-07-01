@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-deployment
+  labels:
+    app: foo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: foo-app
+  template:
+    metadata:
+      labels:
+        app: foo-app
+    spec:
+      containers:
+      - name: foo
+        image: ghcr.io/cloudshit/foo:latest
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bar-deployment
+  labels:
+    app: bar
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bar-app
+  template:
+    metadata:
+      labels:
+        app: bar-app
+    spec:
+      containers:
+      - name: bar
+        image: ghcr.io/cloudshit/bar:latest
+        ports:
+        - containerPort: 8080
