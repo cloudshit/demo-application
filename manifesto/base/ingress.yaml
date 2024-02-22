@@ -4,9 +4,9 @@ metadata:
   name: app-ingress
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/subnets: subnet-0a2aba126e8327b76, subnet-0a2afc4b28121f60c, subnet-0f2c029006de96344
+    alb.ingress.kubernetes.io/subnets: subnet-09d13a2fcf00524bb,subnet-0ec0cd515395c4393,subnet-02c0b3c8c3b0eeb67
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/security-groups: sg-0b2e3e579183b9bda
+    alb.ingress.kubernetes.io/security-groups: sg-04dde6802013377a8
     alb.ingress.kubernetes.io/healthcheck-path: /health
     alb.ingress.kubernetes.io/healthcheck-interval-seconds: "5"
     alb.ingress.kubernetes.io/healthcheck-timeout-seconds: "2"
