@@ -5,7 +5,7 @@ metadata:
   labels:
     app: foo
 spec:
-  replicas: 2
+  replicas: 10
   selector:
     matchLabels:
       app: foo-app
@@ -27,7 +27,7 @@ metadata:
   labels:
     app: bar
 spec:
-  replicas: 2
+  replicas: 10
   selector:
     matchLabels:
       app: bar-app
